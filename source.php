@@ -13,7 +13,8 @@ function manage_users_columns_custom_um( $columns ) {
     $columns['user_registered']       = __( 'UM User Registration',            'ultimate-member' );
     $columns['um_number_logins']      = __( 'UM Number of Logins',             'ultimate-member' );
     if( UM()->options()->get( 'enable_reset_password_limit' ) ) {
-        $columns['password_rst_attempts'] = __( 'UM Number of Password attempts', 'ultimate-member' );
+        $limit = UM()->options()->get( 'reset_password_limit_number' );
+        $columns['password_rst_attempts'] = sprintf( __( 'UM Number of Password attempts (max %d)', 'ultimate-member' ), $limit );
     }
 
     return $columns;
