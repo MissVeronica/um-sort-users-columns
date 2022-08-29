@@ -12,7 +12,9 @@ function manage_users_columns_custom_um( $columns ) {
     $columns['um_last_login']         = __( 'UM Last Login',                   'ultimate-member' );
     $columns['user_registered']       = __( 'UM User Registration',            'ultimate-member' );
     $columns['um_number_logins']      = __( 'UM Number of Logins',             'ultimate-member' );
-    $columns['password_rst_attempts'] = __( 'UM Number of Password attempts',  'ultimate-member' );
+    if( UM()->options()->get( 'enable_reset_password_limit' ) ) {
+        $columns['password_rst_attempts'] = __( 'UM Number of Password attempts', 'ultimate-member' );
+    }
 
     return $columns;
 }
@@ -83,24 +85,25 @@ function register_sortable_columns_custom( $columns ) {
 
 function users_list_table_query_args_custom( $args ) {
 
+    if( isset( $args['orderby'] )) {
+        switch( $args['orderby'] ) {
 
-    switch( $args['orderby'] ) {
-    
-        case 'um_last_login':       $args['meta_key'] = '_um_last_login';        
-                                    $args['type']     = 'numeric';
-                                    break;
-
-        case 'user_registered':     break;
-
-        case 'um_number_logins':    $args['meta_key'] = 'um_number_logins';
-                                    $args['type']     = 'numeric';
-                                    break;
-
-        case 'password_rst_attempts':   $args['meta_key'] = 'password_rst_attempts';
+            case 'um_last_login':       $args['meta_key'] = '_um_last_login';        
                                         $args['type']     = 'numeric';
                                         break;
 
-        default:
+            case 'user_registered':     break;
+
+            case 'um_number_logins':    $args['meta_key'] = 'um_number_logins';
+                                        $args['type']     = 'numeric';
+                                        break;
+
+            case 'password_rst_attempts':   $args['meta_key'] = 'password_rst_attempts';
+                                            $args['type']     = 'numeric';
+                                            break;
+
+            default:
+        }
     }
     return $args;
 }
