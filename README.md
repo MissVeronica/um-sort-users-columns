@@ -7,7 +7,7 @@ Additional Ultimate Member Users Columns to the WP Users backend listing.
 3. UM Number of Logins
 4. UM Number of Password attempts (max %d)
 
-All Columns are sortable.
+All four Columns are sortable.
 
 UM Number of Password attempts is displayed together with the limit only if this UM Feature is enabled in UM Settings -> Access -> Other
 
