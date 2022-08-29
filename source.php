@@ -82,8 +82,7 @@ function register_sortable_columns_custom( $columns ) {
 }
 
 function users_list_table_query_args_custom( $args ) {
-    
-    UM()->classes['um_html_view_function']->debug_cpu_update_profile( $args, __FUNCTION__, 'args', basename($_SERVER['PHP_SELF']), __line__ );
+
 
     switch( $args['orderby'] ) {
     
