@@ -13,4 +13,5 @@ UM Number of Logins is a new UM counter bundled with this code snippet why after
 ## Installation ##
 
 Install into your child-theme’s functions.php file or use the “Code Snippets” plugin.
+
 https://wordpress.org/plugins/code-snippets/
