@@ -3,7 +3,7 @@
 add_filter( 'manage_users_sortable_columns', 'register_sortable_columns_custom', 10, 1 );
 add_filter( 'users_list_table_query_args',   'users_list_table_query_args_custom', 10, 1 );
 
-add_filter( 'manage_users_columns',        'manage_users_columns_custom_um' );
+add_filter( 'manage_users_columns',        'manage_users_columns_custom_um', 10, 1 );
 add_filter( 'manage_users_custom_column',  'manage_users_custom_column_um', 10, 3 );
 add_action( 'um_on_login_before_redirect', 'um_store_number_of_logins', 10, 1 );
 
@@ -69,9 +69,7 @@ function um_store_number_of_logins( $user_id ) {
     update_user_meta( $user_id, 'um_number_logins', $current_number );
     UM()->user()->remove_cache( $user_id );
     um_fetch_user( $user_id );
-}   
-
-
+}
 
 function register_sortable_columns_custom( $columns ) {
 
@@ -106,5 +104,4 @@ function users_list_table_query_args_custom( $args ) {
         }
     }
     return $args;
-}
-  
+}  
