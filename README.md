@@ -1,6 +1,10 @@
 # UM Users Columns
 Additional Ultimate Member Users Columns to the WP Users backend listing.
 
+## Settings 
+UM Settings -> General -> Users
+1. Multi Select Columns - Select the columns you want to add to the WP Users Page.
+
 ## Additional Users Columns
 1. UM Last Login
 2. UM User Registration
