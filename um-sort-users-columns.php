@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Sort Users Columns
  * Description:     Extension to Ultimate Member for Sorting Users Columns.
- * Version:         2.0.0
+ * Version:         2.1.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -22,18 +22,24 @@
 
     function __construct() {
 
-        $this->active_options = array_map( 'sanitize_text_field', maybe_unserialize( UM()->options()->get( 'sort_users_columns' )));
+        add_filter( 'um_settings_structure', array( $this, 'um_settings_structure_sort_users_columns' ), 10, 1 );
 
-        add_filter( 'um_settings_structure',         array( $this, 'um_settings_structure_sort_users_columns' ), 10, 1 );
+        $sort_users_columns = UM()->options()->get( 'sort_users_columns' );
+        if ( ! empty( $sort_users_columns )) {
 
-        add_filter( 'manage_users_sortable_columns', array( $this, 'register_sortable_columns_custom' ), 1, 1 );
-        add_filter( 'users_list_table_query_args',   array( $this, 'users_list_table_query_args_custom' ), 1, 1 );
+            $this->active_options = array_map( 'sanitize_text_field', maybe_unserialize( $sort_users_columns ));
+            if ( ! empty( $this->active_options )) {
 
-        add_filter( 'manage_users_columns',          array( $this, 'manage_users_columns_custom_um' ), 10, 1 );
-        add_filter( 'manage_users_custom_column',    array( $this, 'manage_users_custom_column_um' ), 10, 3 );
+                add_filter( 'manage_users_sortable_columns', array( $this, 'register_sortable_columns_custom' ), 1, 1 );
+                add_filter( 'users_list_table_query_args',   array( $this, 'users_list_table_query_args_custom' ), 1, 1 );
 
-        if ( in_array( 'um_number_logins', $this->active_options )) {
-            add_action( 'um_on_login_before_redirect', array( $this, 'um_store_number_of_logins' ), 10, 1 );
+                add_filter( 'manage_users_columns',          array( $this, 'manage_users_columns_custom_um' ), 10, 1 );
+                add_filter( 'manage_users_custom_column',    array( $this, 'manage_users_custom_column_um' ), 10, 3 );
+
+                if ( in_array( 'um_number_logins', $this->active_options )) {
+                    add_action( 'um_on_login_before_redirect', array( $this, 'um_store_number_of_logins' ), 10, 1 );
+                }
+            }
         }
     }
 
@@ -164,4 +170,3 @@
 }
 
  new UM_Sort_Users_Columns();
-
