@@ -23,6 +23,6 @@ Version 2.0.0 Rewrite as a plugin
 2. https://wordpress.org/plugins/say-what/
 
 ## Installation
-1. Remove the old code snippet.
+1. Remove the old version 1.0.0 code snippet.
 2. Install by downloading the plugin ZIP file and install as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
 3. Activate the Plugin: Ultimate Member - PDF convert Image
