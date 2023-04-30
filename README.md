@@ -20,8 +20,8 @@ UM Number of Logins is a new UM counter bundled with this code snippet why after
 2. UM User Registration
 
 ## Updates
-Version 2.0.0 Rewrite as a plugin
-Version 2.1.0 Update of the Repository download link
+1. Version 2.0.0 Rewrite as a plugin
+2. Version 2.1.0 Update of the Repository download link
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
