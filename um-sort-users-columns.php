@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Sort Users Columns
  * Description:     Extension to Ultimate Member for Sorting Users Columns.
- * Version:         2.1.0
+ * Version:         2.2.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -79,8 +79,7 @@
                 case 'user_registered':         break;
 
                 case 'um_number_logins':
-                case 'password_rst_attempts':   if( empty( $value )) $value = 0;
-                                                $value = (int) $value;
+                case 'password_rst_attempts':   if( empty( $value )) $value = 0;                                                
                                                 break;
                 default:
             }
@@ -110,9 +109,6 @@
             $columns[$column] = $column;
         }
 
-        unset( $columns['um_number_logins'] );
-        unset( $columns['password_rst_attempts'] );
-
         return $columns;
     }
 
@@ -129,10 +125,9 @@
 
                     case 'user_registered':     break;
 
-                    case 'um_number_logins':    $args['meta_key'] = 'um_number_logins';
-                                                break;
-
-                    case 'password_rst_attempts':   $args['meta_key'] = 'password_rst_attempts';
+                    case 'um_number_logins':
+                    case 'password_rst_attempts':   $args['meta_key'] = $args['orderby'];
+                                                    $args['orderby'] = 'meta_value_num';
                                                     break;
 
                     default:
