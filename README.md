@@ -1,4 +1,4 @@
-# UM Users Columns
+# UM Sort Users Columns
 Additional Ultimate Member Sortable Users Columns to the WP All Users backend listing.
 
 ## Settings 
