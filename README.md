@@ -15,13 +15,10 @@ UM Number of Password attempts is displayed together with the limit only if this
 
 UM Number of Logins is a new UM counter bundled with this code snippet why after installation all users will have 0 logins.
 
-## Sortable Columns
-1. UM Last Login
-2. UM User Registration
-
 ## Updates
 1. Version 2.0.0 Rewrite as a plugin
 2. Version 2.1.0 Update of the Repository download link
+3. Version 2.2.0 Fixng sort for all columns incl numeric columns
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
@@ -30,4 +27,4 @@ UM Number of Logins is a new UM counter bundled with this code snippet why after
 ## Installation
 1. Remove the old version 1.0.0 code snippet if installed.
 2. Install by downloading the plugin ZIP file and install as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
-3. Activate the Plugin: Ultimate Member - PDF convert Image
+3. Activate the Plugin: Ultimate Member - Sort Users Columns
