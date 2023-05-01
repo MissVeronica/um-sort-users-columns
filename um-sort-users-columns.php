@@ -125,17 +125,14 @@
                 switch( $args['orderby'] ) {
 
                     case '_um_last_login':      $args['meta_key'] = '_um_last_login';
-                                                $args['type']     = 'numeric';
                                                 break;
 
                     case 'user_registered':     break;
 
                     case 'um_number_logins':    $args['meta_key'] = 'um_number_logins';
-                                                $args['type']     = 'numeric';
                                                 break;
 
                     case 'password_rst_attempts':   $args['meta_key'] = 'password_rst_attempts';
-                                                    $args['type']     = 'numeric';
                                                     break;
 
                     default:
