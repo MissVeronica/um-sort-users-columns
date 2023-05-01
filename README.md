@@ -1,24 +1,24 @@
 # UM Users Columns
-Additional Ultimate Member Users Columns to the WP Users backend listing.
+Additional Ultimate Member Sortable Users Columns to the WP All Users backend listing.
 
 ## Settings 
 UM Settings -> General -> Users
 1. Multi Select Columns - Select the columns you want to add to the WP Users Page.
 
-## Additional Users Columns
+## Additional WP Users Columns
 1. UM Last Login
 2. UM User Registration
 3. UM Number of Logins
 4. UM Number of Password attempts (max %d)
 
-UM Number of Password attempts is displayed together with the limit only if this UM Feature is enabled in UM Settings -> Access -> Other
-
-UM Number of Logins is a new UM counter bundled with this code snippet why after installation all users will have 0 logins.
+## Notes
+1. UM Number of Password attempts is displayed together with the limit only if this UM Feature is enabled in UM Settings -> Access -> Other
+2. UM Number of Logins is a new UM counter bundled with this code snippet why after installation all users will have 0 logins.
 
 ## Updates
 1. Version 2.0.0 Rewrite as a plugin
 2. Version 2.1.0 Update of the Repository download link
-3. Version 2.2.0 Fixng sort for all columns incl numeric columns
+3. Version 2.2.0 Fixing sort for all columns incl numeric columns
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
