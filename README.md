@@ -10,15 +10,19 @@ UM Settings -> General -> Users
 2. UM User Registration
 3. UM Number of Logins
 4. UM Number of Password attempts (max %d)
+5. UM User approved by
 
 ## Notes
 1. UM Number of Password attempts is displayed together with the limit only if this UM Feature is enabled in UM Settings -> Access -> Other
-2. UM Number of Logins is a new UM counter bundled with this code snippet why after installation all users will have 0 logins.
+2. UM Number of Logins is a new UM counter bundled with this plugin why after installation all users will have 0 logins.
+3. UM User approved by is a new UM field bundled with this plugin why after installation all users will have no entry.
 
 ## Updates
 1. Version 2.0.0 Rewrite as a plugin
 2. Version 2.1.0 Update of the Repository download link
 3. Version 2.2.0 Fixing sort for all columns incl numeric columns
+4. Version 2.3.0 Added UM User approved by
+
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
