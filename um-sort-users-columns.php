@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Sort Users Columns
  * Description:     Extension to Ultimate Member for Sorting Users Columns.
- * Version:         2.3.0
+ * Version:         2.4.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -41,7 +41,11 @@
                 }
 
                 if ( in_array( 'um_approved_membership_by', $this->active_options )) {
-                    add_action( 'um_admin_user_action_um_approve_membership_hook', 'um_admin_user_action_um_approved_membership_by', 10 );
+                    add_action( 'um_admin_user_action_um_approve_membership_hook', array( $this, 'um_admin_user_action_approved_membership_by' ), 10 );
+                }
+
+                if ( in_array( 'um_last_editing_user', $this->active_options )) {
+                    add_action( 'um_after_user_updated', array( $this, 'um_after_user_updated_last_editing_user' ), 10, 3 );
                 }
 
             }
@@ -50,10 +54,11 @@
 
     public function manage_users_columns_custom_um( $columns ) {
 
-        $headers['_um_last_login']            = __( 'UM Last Login',        'ultimate-member' );
-        $headers['user_registered']           = __( 'UM User Registration', 'ultimate-member' );
-        $headers['um_number_logins']          = __( 'UM Number of Logins',  'ultimate-member' );
-        $headers['um_approved_membership_by'] = __( 'UM User Approved by',  'ultimate-member' );
+        $headers['_um_last_login']            = __( 'UM Last Login',            'ultimate-member' );
+        $headers['user_registered']           = __( 'UM User Registration',     'ultimate-member' );
+        $headers['um_number_logins']          = __( 'UM Number of Logins',      'ultimate-member' );
+        $headers['um_approved_membership_by'] = __( 'UM User Approved by',      'ultimate-member' );
+        $headers['um_last_editing_user']      = __( 'Last User edting Profile', 'ultimate-member' );
 
         if ( UM()->options()->get( 'enable_reset_password_limit' ) ) {
 
@@ -86,19 +91,20 @@
                 case 'user_registered':             break;
 
                 case 'um_number_logins':
-                case 'password_rst_attempts':       if ( empty( $value )) $value = 0;                                                
+                case 'password_rst_attempts':       if ( empty( $value )) $value = 0;
                                                     break;
 
+                case 'um_last_editing_user':
                 case 'um_approved_membership_by':   if ( ! empty( $value )) {
-                                                        $approver = new WP_User( $value );
-                                                        $value = $approver->user_login;
+                                                        $user = new WP_User( $value );
+                                                        $value = $user->user_login;
                                                     } else {
                                                         $value = '';
                                                     }
                                                     break;
-   
+
                 default:
-            }            
+            }
         }
 
         return $value;
@@ -106,7 +112,7 @@
 
     public function um_store_number_of_logins( $user_id ) {
 
-        um_fetch_user( $user_id );     
+        um_fetch_user( $user_id );
 
         $current_number = um_user( 'um_number_logins' );
         if ( empty( $current_number )) $current_number = 1;
@@ -117,12 +123,20 @@
         um_fetch_user( $user_id );
     }
 
-    public function um_admin_user_action_um_approved_membership_by() {
+    public function um_admin_user_action_approved_membership_by() {
 
         global $current_user;
-    
+
         update_user_meta( um_user( 'ID' ), 'um_approved_membership_by', $current_user->ID );
     }
+
+    public function um_after_user_updated_last_editing_user( $user_id, $args, $to_update ) {
+
+        global $current_user;
+
+        update_user_meta( $user_id, 'um_last_editing_user', $current_user->ID );
+    }
+
 
     public function register_sortable_columns_custom( $columns ) {
 
@@ -141,17 +155,23 @@
 
                 switch( $args['orderby'] ) {
 
-                    case '_um_last_login':      $args['meta_key'] = '_um_last_login';
-                                                break;
+                    case '_um_last_login':              $args['meta_key'] = '_um_last_login';
+                                                        break;
 
-                    case 'user_registered':     break;
+                    case 'user_registered':             break;
 
                     case 'um_number_logins':
-                    case 'password_rst_attempts':   $args['meta_key'] = $args['orderby'];
-                                                    $args['orderby'] = 'meta_value_num';
-                                                    break;
-                    case 'um_approved_membership_by':
+                    case 'password_rst_attempts':       $args['meta_key'] = $args['orderby'];
+                                                        $args['orderby'] = 'meta_value_num';
+                                                        break;
 
+                    case 'um_approved_membership_by':   $args['meta_key'] = 'um_approved_membership_by';
+                                                        $args['orderby'] = 'meta_value_num';
+                                                        break;
+
+                    case 'um_last_editing_user':        $args['meta_key'] = 'um_last_editing_user';
+                                                        $args['orderby'] = 'meta_value_num';
+                                                        break;
                     default:
                 }
             }
@@ -176,6 +196,7 @@
                                         'um_number_logins'          =>  __( 'Number of User Logins',     'ultimate-member' ),
                                         'password_rst_attempts'     =>  __( 'Number of password resets', 'ultimate-member' ),
                                         'um_approved_membership_by' =>  __( 'User approved by',          'ultimate-member' ),
+                                        'um_last_editing_user'      =>  __( 'Last User edting Profile',  'ultimate-member' ),
                                         ),
             );
 
