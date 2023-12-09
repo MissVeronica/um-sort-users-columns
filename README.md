@@ -25,7 +25,7 @@ UM Settings -> General -> Users
 3. Version 2.2.0 Fixing sort for all columns incl numeric columns
 4. Version 2.3.0 Added UM User approved by
 5. Version 2.4.0 Added UM Last User edting Profile
-
+6. Version 2.5.0 Tested with UM version 2.8.0
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
