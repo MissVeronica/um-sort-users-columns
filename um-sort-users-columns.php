@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Sort Users Columns
  * Description:     Extension to Ultimate Member for Sorting Users Columns.
- * Version:         2.4.0
+ * Version:         2.5.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -10,7 +10,7 @@
  * Author URI:      https://github.com/MissVeronica
  * Text Domain:     ultimate-member
  * Domain Path:     /languages
- * UM version:      2.6.10
+ * UM version:      2.8.0
  */
 
  if ( ! defined( 'ABSPATH' ) ) exit; 
@@ -83,12 +83,11 @@
 
             switch( $column_name ) {
 
-                case '_um_last_login':              if ( ! empty( $value )) {
-                                                        $value = date_i18n( 'Y-m-d H:i:s', $value );
+                case '_um_last_login':
+                case 'user_registered':             if ( ! empty( $value )) {
+                                                        $value = wp_date( get_option( 'date_format', 'F j, Y' ) . ' ' . get_option( 'time_format', 'g:i a' ), strtotime( $value ));
                                                     }
                                                     break;
-
-                case 'user_registered':             break;
 
                 case 'um_number_logins':
                 case 'password_rst_attempts':       if ( empty( $value )) $value = 0;
