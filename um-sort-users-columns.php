@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Sort Users Columns
  * Description:     Extension to Ultimate Member for Sorting Users Columns.
- * Version:         2.5.0
+ * Version:         2.6.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -10,7 +10,7 @@
  * Author URI:      https://github.com/MissVeronica
  * Text Domain:     ultimate-member
  * Domain Path:     /languages
- * UM version:      2.8.0
+ * UM version:      2.8.3
  */
 
  if ( ! defined( 'ABSPATH' ) ) exit; 
@@ -181,14 +181,17 @@
 
     public function um_settings_structure_sort_users_columns( $settings_structure ) {
 
-        $settings_structure['']['sections']['users']['fields'][] =
+        $settings_structure['']['sections']['users']['form_sections']['sort_users_columns']['title']       = __( 'Sort Users Columns', 'ultimate-member' );
+        $settings_structure['']['sections']['users']['form_sections']['sort_users_columns']['description'] = __( 'Plugin version 2.6.0 - tested with UM 2.8.3', 'ultimate-member' );
+
+        $settings_structure['']['sections']['users']['form_sections']['sort_users_columns']['fields'][] =
 
         array(
                 'id'          => 'sort_users_columns',
                 'type'        => 'select',
                 'multi'       => true,
-                'label'       => __( 'Sort Users Columns - Multi Select Columns', 'ultimate-member' ),
-                'tooltip'     => __( 'Select the columns you want to add to the WP Users Page.', 'ultimate-member' ),
+                'label'       => __( 'Multi Select Columns', 'ultimate-member' ),
+                'description' => __( 'Select the columns you want to add to the WP Users Page.', 'ultimate-member' ),
                 'size'        => 'medium',
                 'options'     => array( '_um_last_login'            =>  __( 'Last User Login',           'ultimate-member' ),
                                         'user_registered'           =>  __( 'User Registration',         'ultimate-member' ),
