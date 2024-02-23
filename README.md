@@ -26,7 +26,7 @@ UM Settings -> General -> Users
 4. Version 2.3.0 Added UM User approved by
 5. Version 2.4.0 Added UM Last User edting Profile
 6. Version 2.5.0 Tested with UM version 2.8.0
-7. Version 2.6.0 Tested with UM version 2.8.3
+7. Version 2.6.0 Updated for UM 2.8.3
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
