@@ -1,8 +1,7 @@
 # UM Sort Users Columns
 Additional Ultimate Member Sortable Users Columns to the WP All Users backend listing.
 
-## Settings 
-UM Settings -> General -> Users
+## UM Settings -> General -> Users 
 1. Multi Select Columns - Select the columns you want to add to the WP Users Page.
 
 ## Additional WP Users Columns
@@ -27,12 +26,14 @@ UM Settings -> General -> Users
 5. Version 2.4.0 Added UM Last User edting Profile
 6. Version 2.5.0 Tested with UM version 2.8.0
 7. Version 2.6.0 Updated for UM 2.8.3
+8. Version 2.7.0 Updated for UM 2.8.8
 
 ## Translations or Text changes
 1. Use the "Say What?" plugin with text domain ultimate-member
 2. https://wordpress.org/plugins/say-what/
 
-## Installation
+## Installation & Updates
 1. Remove the old version 1.0.0 code snippet if installed.
-2. Install by downloading the plugin ZIP file and install as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
-3. Activate the Plugin: Ultimate Member - Sort Users Columns
+2. Install by downloading the plugin ZIP file via the green button.
+3. Install or Update as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
+4. Activate the Plugin: Ultimate Member - Sort Users Columns
